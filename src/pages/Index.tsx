@@ -32,7 +32,7 @@ export default function Index() {
       icon: 'Sparkles',
       title: 'Brand Partnerships',
       description: 'Сотрудничество с опытными людьми и крупными компаниями',
-      features: ['Контракты с брендами', 'Рекламные съёмки', 'Амбассадорство', 'Социальные медиа']
+      features: []
     },
     {
       id: 2,
