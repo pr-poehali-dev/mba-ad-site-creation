@@ -17,24 +17,36 @@ export default function Index() {
     console.log('Form submitted:', formData);
   };
 
-  const gallery = [
+  const [activeService, setActiveService] = useState(0);
+
+  const services = [
+    {
+      id: 0,
+      icon: 'Star',
+      title: 'Model Management',
+      description: 'Профессиональное продвижение моделей на международном уровне',
+      features: ['Портфолио', 'Кастинги', 'Контракты', 'Развитие карьеры']
+    },
     {
       id: 1,
-      title: 'Elegance',
-      image: 'https://cdn.poehali.dev/projects/812356d1-f93d-419f-abe3-3596f2636c27/files/ff443170-6c5e-4a05-be56-99590efec85d.jpg',
-      category: 'Abstract Art'
+      icon: 'Camera',
+      title: 'Fashion Shows',
+      description: 'Организация показов и участие в ведущих модных неделях',
+      features: ['Подиумы мира', 'Дизайнерские коллаборации', 'VIP события', 'Пресс-туры']
     },
     {
       id: 2,
-      title: 'Geometry',
-      image: 'https://cdn.poehali.dev/projects/812356d1-f93d-419f-abe3-3596f2636c27/files/90b09892-9cee-4d37-8709-af48fdeaffc1.jpg',
-      category: 'Modern Design'
+      icon: 'Sparkles',
+      title: 'Brand Partnerships',
+      description: 'Сотрудничество с премиальными брендами и рекламные кампании',
+      features: ['Контракты с брендами', 'Рекламные съёмки', 'Амбассадорство', 'Социальные медиа']
     },
     {
       id: 3,
-      title: 'Flow',
-      image: 'https://cdn.poehali.dev/projects/812356d1-f93d-419f-abe3-3596f2636c27/files/c4d31772-4ae9-4728-b85f-1b07480f7a09.jpg',
-      category: 'Fluid Art'
+      icon: 'Briefcase',
+      title: 'Talent Development',
+      description: 'Комплексное обучение и развитие профессиональных навыков',
+      features: ['Подиумная походка', 'Актёрское мастерство', 'Фотогеничность', 'Этикет']
     }
   ];
 
@@ -44,7 +56,7 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold gradient-text">MBA</h1>
           <div className="hidden md:flex gap-8">
-            <a href="#portfolio" className="text-sm text-foreground/80 hover:text-primary transition-colors">Портфолио</a>
+            <a href="#services" className="text-sm text-foreground/80 hover:text-primary transition-colors">Услуги</a>
             <a href="#about" className="text-sm text-foreground/80 hover:text-primary transition-colors">О нас</a>
             <a href="#contact" className="text-sm text-foreground/80 hover:text-primary transition-colors">Контакты</a>
           </div>
@@ -88,35 +100,73 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="portfolio" className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
+      <section id="services" className="py-20 px-6 relative">
+        <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/20 rounded-full blur-[150px] -translate-y-1/2" />
+        <div className="absolute top-1/2 right-0 w-96 h-96 bg-secondary/20 rounded-full blur-[150px] -translate-y-1/2" />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h3 className="text-5xl md:text-6xl font-light mb-4">Наша <span className="gradient-text">галерея</span></h3>
-            <p className="text-muted-foreground text-lg">Искусство и элегантность в каждой детали</p>
+            <h3 className="text-5xl md:text-6xl font-light mb-4">Наши <span className="gradient-text">услуги</span></h3>
+            <p className="text-muted-foreground text-lg">Профессиональный сервис мирового уровня</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {gallery.map((item, index) => (
-              <div 
-                key={item.id} 
-                className="group cursor-pointer animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+          
+          <div className="grid md:grid-cols-4 gap-4 mb-12">
+            {services.map((service) => (
+              <button
+                key={service.id}
+                onClick={() => setActiveService(service.id)}
+                className={`glass rounded-2xl p-6 text-left transition-all duration-300 ${
+                  activeService === service.id 
+                    ? 'glow bg-primary/10 border-primary/50' 
+                    : 'hover:bg-white/5'
+                }`}
               >
-                <div className="relative overflow-hidden aspect-[3/4] mb-4 rounded-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-                  <img 
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover rounded-2xl border border-white/5 transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl flex items-end p-6">
-                    <div className="text-white">
-                      <h4 className="text-xl font-medium">{item.title}</h4>
-                      <p className="text-sm text-white/80">{item.category}</p>
+                <Icon 
+                  name={service.icon as any} 
+                  size={32} 
+                  className={`mb-4 transition-colors ${
+                    activeService === service.id ? 'text-primary' : 'text-muted-foreground'
+                  }`} 
+                />
+                <h4 className={`font-medium mb-2 transition-colors ${
+                  activeService === service.id ? 'gradient-text' : 'text-foreground'
+                }`}>
+                  {service.title}
+                </h4>
+              </button>
+            ))}
+          </div>
+
+          <div className="glass rounded-3xl p-12 animate-fade-in">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-3 glass rounded-full px-6 py-2">
+                  <Icon name={services[activeService].icon as any} size={24} className="text-primary" />
+                  <span className="text-sm text-muted-foreground">{services[activeService].title}</span>
+                </div>
+                <h4 className="text-4xl font-light leading-tight">
+                  {services[activeService].description}
+                </h4>
+                <div className="grid grid-cols-2 gap-4 pt-4">
+                  {services[activeService].features.map((feature, index) => (
+                    <div 
+                      key={index} 
+                      className="flex items-center gap-3 animate-fade-in"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <div className="w-2 h-2 rounded-full bg-primary glow" />
+                      <span className="text-muted-foreground">{feature}</span>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
-            ))}
+              <div className="relative h-[400px]">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-2xl blur-3xl animate-glow-pulse" />
+                <div className="relative h-full glass rounded-2xl flex items-center justify-center">
+                  <Icon name={services[activeService].icon as any} size={120} className="text-primary/20" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
