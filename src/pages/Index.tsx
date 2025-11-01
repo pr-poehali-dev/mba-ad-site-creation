@@ -39,53 +39,59 @@ export default function Index() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-black/10">
+    <div className="min-h-screen">
+      <nav className="fixed top-0 w-full glass z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold tracking-tight">MBA</h1>
+          <h1 className="text-2xl font-bold gradient-text">MBA</h1>
           <div className="hidden md:flex gap-8">
-            <a href="#portfolio" className="text-sm hover:text-muted-foreground transition-colors">Портфолио</a>
-            <a href="#about" className="text-sm hover:text-muted-foreground transition-colors">О нас</a>
-            <a href="#contact" className="text-sm hover:text-muted-foreground transition-colors">Контакты</a>
+            <a href="#portfolio" className="text-sm text-foreground/80 hover:text-primary transition-colors">Портфолио</a>
+            <a href="#about" className="text-sm text-foreground/80 hover:text-primary transition-colors">О нас</a>
+            <a href="#contact" className="text-sm text-foreground/80 hover:text-primary transition-colors">Контакты</a>
           </div>
-          <Button variant="outline" size="sm" className="border-black hover:bg-black hover:text-white transition-all">
+          <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary hover:text-white transition-all glow">
             Стать моделью
           </Button>
         </div>
       </nav>
 
-      <section className="pt-32 pb-20 px-6 min-h-screen flex items-center">
-        <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+      <section className="pt-32 pb-20 px-6 min-h-screen flex items-center relative overflow-hidden">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full blur-[120px] animate-float" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-[120px] animate-float" style={{ animationDelay: '2s' }} />
+        
+        <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-8 animate-fade-in">
             <h2 className="text-6xl md:text-8xl font-light tracking-tight leading-[0.9]">
-              Модельное<br />агентство<br />MBA
+              Модельное<br />
+              <span className="gradient-text">агентство</span><br />
+              MBA
             </h2>
             <p className="text-lg text-muted-foreground max-w-md leading-relaxed">
               Мы создаём будущее модной индустрии, открывая таланты и строя карьеры мирового уровня
             </p>
             <div className="flex gap-4">
-              <Button size="lg" className="bg-black text-white hover:bg-black/90">
+              <Button size="lg" className="bg-primary text-white hover:bg-primary/90 glow">
                 Наше портфолио
               </Button>
-              <Button size="lg" variant="outline" className="border-black hover:bg-black hover:text-white">
+              <Button size="lg" variant="outline" className="border-primary/50 hover:bg-primary hover:text-white">
                 Связаться
               </Button>
             </div>
           </div>
           <div className="relative h-[600px] animate-scale-in">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-2xl" />
             <img 
               src="https://cdn.poehali.dev/projects/812356d1-f93d-419f-abe3-3596f2636c27/files/c958128c-2840-4028-ae6c-efead9c6ac64.jpg"
               alt="MBA Model"
-              className="w-full h-full object-cover"
+              className="relative w-full h-full object-cover rounded-3xl border border-white/10"
             />
           </div>
         </div>
       </section>
 
-      <section id="portfolio" className="py-20 px-6 bg-secondary">
+      <section id="portfolio" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-5xl md:text-6xl font-light mb-4">Наши модели</h3>
+            <h3 className="text-5xl md:text-6xl font-light mb-4">Наши <span className="gradient-text">модели</span></h3>
             <p className="text-muted-foreground text-lg">Таланты, покоряющие подиумы мира</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -95,62 +101,70 @@ export default function Index() {
                 className="group cursor-pointer animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="relative overflow-hidden aspect-[3/4] mb-4">
+                <div className="relative overflow-hidden aspect-[3/4] mb-4 rounded-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
                   <img 
                     src={model.image}
                     alt={model.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover rounded-2xl border border-white/5 transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl flex items-end p-6">
+                    <div className="text-white">
+                      <h4 className="text-xl font-medium">{model.name}</h4>
+                      <p className="text-sm text-white/80">{model.category}</p>
+                    </div>
+                  </div>
                 </div>
-                <h4 className="text-xl font-medium mb-1">{model.name}</h4>
-                <p className="text-sm text-muted-foreground">{model.category}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="about" className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h3 className="text-5xl md:text-6xl font-light">О нас</h3>
+      <section id="about" className="py-20 px-6 relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px]" />
+        
+        <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+          <h3 className="text-5xl md:text-6xl font-light">О <span className="gradient-text">нас</span></h3>
           <p className="text-xl text-muted-foreground leading-relaxed">
             MBA — это модельное агентство с 15-летней историей успеха. Мы работаем с ведущими брендами 
             и дизайнерами, представляя лучших моделей на подиумах Милана, Парижа и Нью-Йорка.
           </p>
           <div className="grid md:grid-cols-3 gap-8 pt-12">
-            <div className="space-y-3">
-              <Icon name="Award" size={40} className="mx-auto text-black" />
-              <h4 className="text-3xl font-light">50+</h4>
+            <div className="glass rounded-2xl p-8 space-y-4 hover:glow transition-all duration-300">
+              <Icon name="Award" size={48} className="mx-auto text-primary" />
+              <h4 className="text-4xl font-light gradient-text">50+</h4>
               <p className="text-muted-foreground">Международных наград</p>
             </div>
-            <div className="space-y-3">
-              <Icon name="Users" size={40} className="mx-auto text-black" />
-              <h4 className="text-3xl font-light">200+</h4>
+            <div className="glass rounded-2xl p-8 space-y-4 hover:glow transition-all duration-300">
+              <Icon name="Users" size={48} className="mx-auto text-primary" />
+              <h4 className="text-4xl font-light gradient-text">200+</h4>
               <p className="text-muted-foreground">Моделей в портфолио</p>
             </div>
-            <div className="space-y-3">
-              <Icon name="Globe" size={40} className="mx-auto text-black" />
-              <h4 className="text-3xl font-light">30+</h4>
+            <div className="glass rounded-2xl p-8 space-y-4 hover:glow transition-all duration-300">
+              <Icon name="Globe" size={48} className="mx-auto text-primary" />
+              <h4 className="text-4xl font-light gradient-text">30+</h4>
               <p className="text-muted-foreground">Стран присутствия</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="py-20 px-6 bg-black text-white">
-        <div className="max-w-2xl mx-auto">
+      <section id="contact" className="py-20 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+        
+        <div className="max-w-2xl mx-auto relative z-10">
           <div className="text-center mb-12">
-            <h3 className="text-5xl md:text-6xl font-light mb-4">Свяжитесь с нами</h3>
-            <p className="text-white/70 text-lg">Готовы начать карьеру в модельном бизнесе?</p>
+            <h3 className="text-5xl md:text-6xl font-light mb-4">Свяжитесь с <span className="gradient-text">нами</span></h3>
+            <p className="text-muted-foreground text-lg">Готовы начать карьеру в модельном бизнесе?</p>
           </div>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 glass rounded-3xl p-8">
             <div>
               <Input 
                 placeholder="Ваше имя"
                 value={formData.name}
                 onChange={(e) => setFormData({...formData, name: e.target.value})}
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white"
+                className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary"
               />
             </div>
             <div>
@@ -159,7 +173,7 @@ export default function Index() {
                 placeholder="Email"
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white"
+                className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary"
               />
             </div>
             <div>
@@ -168,7 +182,7 @@ export default function Index() {
                 placeholder="Телефон"
                 value={formData.phone}
                 onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white"
+                className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary"
               />
             </div>
             <div>
@@ -176,46 +190,46 @@ export default function Index() {
                 placeholder="Расскажите о себе"
                 value={formData.message}
                 onChange={(e) => setFormData({...formData, message: e.target.value})}
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white min-h-[120px]"
+                className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary min-h-[120px]"
               />
             </div>
-            <Button type="submit" size="lg" className="w-full bg-white text-black hover:bg-white/90">
+            <Button type="submit" size="lg" className="w-full bg-primary text-white hover:bg-primary/90 glow">
               Отправить заявку
             </Button>
           </form>
         </div>
       </section>
 
-      <footer className="bg-black text-white py-12 px-6 border-t border-white/10">
+      <footer className="glass py-12 px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h4 className="text-2xl font-bold mb-4">MBA</h4>
-              <p className="text-white/60">Модельное агентство мирового уровня</p>
+              <h4 className="text-2xl font-bold gradient-text mb-4">MBA</h4>
+              <p className="text-muted-foreground">Модельное агентство мирового уровня</p>
             </div>
             <div>
-              <h5 className="font-medium mb-3">Контакты</h5>
-              <div className="space-y-2 text-white/60">
+              <h5 className="font-medium mb-3 text-foreground">Контакты</h5>
+              <div className="space-y-2 text-muted-foreground">
                 <p>info@mba-models.com</p>
                 <p>+7 (495) 123-45-67</p>
               </div>
             </div>
             <div>
-              <h5 className="font-medium mb-3">Социальные сети</h5>
+              <h5 className="font-medium mb-3 text-foreground">Социальные сети</h5>
               <div className="flex gap-4">
-                <a href="#" className="hover:text-white/60 transition-colors">
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                   <Icon name="Instagram" size={24} />
                 </a>
-                <a href="#" className="hover:text-white/60 transition-colors">
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                   <Icon name="Facebook" size={24} />
                 </a>
-                <a href="#" className="hover:text-white/60 transition-colors">
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                   <Icon name="Twitter" size={24} />
                 </a>
               </div>
             </div>
           </div>
-          <div className="border-t border-white/10 pt-8 text-center text-white/60 text-sm">
+          <div className="border-t border-white/5 pt-8 text-center text-muted-foreground text-sm">
             © 2024 MBA Models. Все права защищены.
           </div>
         </div>
