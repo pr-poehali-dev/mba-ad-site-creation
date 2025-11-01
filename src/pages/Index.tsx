@@ -79,9 +79,6 @@ export default function Index() {
             </h2>
             <p className="text-lg text-muted-foreground max-w-md leading-relaxed">Мы создаём будущее индустрии веб - моделинга, открывая таланты и строя карьеры высокого уровня.</p>
             <div className="flex gap-4">
-              <Button size="lg" className="bg-primary text-white hover:bg-primary/90 glow">
-                Наше портфолио
-              </Button>
               <Button size="lg" variant="outline" className="border-primary/50 hover:bg-primary hover:text-white">
                 Связаться
               </Button>
