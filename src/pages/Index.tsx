@@ -78,11 +78,7 @@ export default function Index() {
               MBA
             </h2>
             <p className="text-lg text-muted-foreground max-w-md leading-relaxed">Мы создаём будущее индустрии веб - моделинга, открывая таланты и строя карьеры высокого уровня.</p>
-            <div className="flex gap-4">
-              <Button size="lg" variant="outline" className="border-primary/50 hover:bg-primary hover:text-white">
-                Связаться
-              </Button>
-            </div>
+
           </div>
           <div className="relative h-[600px] animate-scale-in">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-3xl blur-3xl animate-glow-pulse" />
