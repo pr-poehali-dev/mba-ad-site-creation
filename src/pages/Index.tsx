@@ -29,20 +29,13 @@ export default function Index() {
     },
     {
       id: 1,
-      icon: 'Camera',
-      title: 'Fashion Shows',
-      description: 'Организация показов и участие в ведущих модных неделях',
-      features: ['Подиумы мира', 'Дизайнерские коллаборации', 'VIP события', 'Пресс-туры']
-    },
-    {
-      id: 2,
       icon: 'Sparkles',
       title: 'Brand Partnerships',
       description: 'Сотрудничество с премиальными брендами и рекламные кампании',
       features: ['Контракты с брендами', 'Рекламные съёмки', 'Амбассадорство', 'Социальные медиа']
     },
     {
-      id: 3,
+      id: 2,
       icon: 'Briefcase',
       title: 'Talent Development',
       description: 'Комплексное обучение и развитие профессиональных навыков',
@@ -101,7 +94,7 @@ export default function Index() {
             <p className="text-muted-foreground text-lg">Профессиональный сервис мирового уровня</p>
           </div>
           
-          <div className="grid md:grid-cols-4 gap-4 mb-12">
+          <div className="grid md:grid-cols-3 gap-4 mb-12">
             {services.map((service) => (
               <button
                 key={service.id}
