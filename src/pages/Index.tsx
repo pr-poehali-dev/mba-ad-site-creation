@@ -24,7 +24,7 @@ export default function Index() {
       id: 0,
       icon: 'Star',
       title: 'Model Management',
-      description: 'Профессиональное продвижение моделей на международном уровне',
+      description: 'Профессиональное продвижение моделей',
       features: ['Портфолио', 'Кастинги', 'Контракты', 'Развитие карьеры']
     },
     {
