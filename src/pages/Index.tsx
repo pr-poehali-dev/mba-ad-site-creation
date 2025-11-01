@@ -131,6 +131,18 @@ export default function Index() {
                 <h4 className="text-4xl font-light leading-tight">
                   {services[activeService].description}
                 </h4>
+                <div className="grid grid-cols-2 gap-4 pt-4">
+                  {services[activeService].features.map((feature, index) => (
+                    <div 
+                      key={index} 
+                      className="flex items-center gap-3 animate-fade-in"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <div className="w-2 h-2 rounded-full bg-primary glow" />
+                      <span className="text-muted-foreground">{feature}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="relative h-[400px]">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-2xl blur-3xl animate-glow-pulse" />
