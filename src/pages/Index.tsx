@@ -77,9 +77,7 @@ export default function Index() {
               <span className="gradient-text">агентство</span><br />
               MBA
             </h2>
-            <p className="text-lg text-muted-foreground max-w-md leading-relaxed">
-              Мы создаём будущее модной индустрии, открывая таланты и строя карьеры мирового уровня
-            </p>
+            <p className="text-lg text-muted-foreground max-w-md leading-relaxed">Мы создаём будущее индустрии веб - моделинга, открывая таланты и строя карьеры высокого.</p>
             <div className="flex gap-4">
               <Button size="lg" className="bg-primary text-white hover:bg-primary/90 glow">
                 Наше портфолио
