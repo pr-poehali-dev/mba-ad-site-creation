@@ -17,24 +17,24 @@ export default function Index() {
     console.log('Form submitted:', formData);
   };
 
-  const models = [
+  const gallery = [
     {
       id: 1,
-      name: 'Анна Соколова',
-      image: 'https://cdn.poehali.dev/projects/812356d1-f93d-419f-abe3-3596f2636c27/files/c958128c-2840-4028-ae6c-efead9c6ac64.jpg',
-      category: 'High Fashion'
+      title: 'Elegance',
+      image: 'https://cdn.poehali.dev/projects/812356d1-f93d-419f-abe3-3596f2636c27/files/ff443170-6c5e-4a05-be56-99590efec85d.jpg',
+      category: 'Abstract Art'
     },
     {
       id: 2,
-      name: 'Дмитрий Волков',
-      image: 'https://cdn.poehali.dev/projects/812356d1-f93d-419f-abe3-3596f2636c27/files/06e7fc38-6128-4037-90ad-7cef641d93f7.jpg',
-      category: 'Commercial'
+      title: 'Geometry',
+      image: 'https://cdn.poehali.dev/projects/812356d1-f93d-419f-abe3-3596f2636c27/files/90b09892-9cee-4d37-8709-af48fdeaffc1.jpg',
+      category: 'Modern Design'
     },
     {
       id: 3,
-      name: 'Елена Петрова',
-      image: 'https://cdn.poehali.dev/projects/812356d1-f93d-419f-abe3-3596f2636c27/files/1d022624-8657-49a4-af54-62b408c14721.jpg',
-      category: 'Editorial'
+      title: 'Flow',
+      image: 'https://cdn.poehali.dev/projects/812356d1-f93d-419f-abe3-3596f2636c27/files/c4d31772-4ae9-4728-b85f-1b07480f7a09.jpg',
+      category: 'Fluid Art'
     }
   ];
 
@@ -78,10 +78,10 @@ export default function Index() {
             </div>
           </div>
           <div className="relative h-[600px] animate-scale-in">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-2xl" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-3xl blur-3xl animate-glow-pulse" />
             <img 
-              src="https://cdn.poehali.dev/projects/812356d1-f93d-419f-abe3-3596f2636c27/files/c958128c-2840-4028-ae6c-efead9c6ac64.jpg"
-              alt="MBA Model"
+              src="https://cdn.poehali.dev/projects/812356d1-f93d-419f-abe3-3596f2636c27/files/bea289eb-6ab8-48cb-828f-2d4ee3352a27.jpg"
+              alt="MBA Agency"
               className="relative w-full h-full object-cover rounded-3xl border border-white/10"
             />
           </div>
@@ -91,27 +91,27 @@ export default function Index() {
       <section id="portfolio" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-5xl md:text-6xl font-light mb-4">Наши <span className="gradient-text">модели</span></h3>
-            <p className="text-muted-foreground text-lg">Таланты, покоряющие подиумы мира</p>
+            <h3 className="text-5xl md:text-6xl font-light mb-4">Наша <span className="gradient-text">галерея</span></h3>
+            <p className="text-muted-foreground text-lg">Искусство и элегантность в каждой детали</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {models.map((model, index) => (
+            {gallery.map((item, index) => (
               <div 
-                key={model.id} 
+                key={item.id} 
                 className="group cursor-pointer animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative overflow-hidden aspect-[3/4] mb-4 rounded-2xl">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
                   <img 
-                    src={model.image}
-                    alt={model.name}
+                    src={item.image}
+                    alt={item.title}
                     className="w-full h-full object-cover rounded-2xl border border-white/5 transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl flex items-end p-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl flex items-end p-6">
                     <div className="text-white">
-                      <h4 className="text-xl font-medium">{model.name}</h4>
-                      <p className="text-sm text-white/80">{model.category}</p>
+                      <h4 className="text-xl font-medium">{item.title}</h4>
+                      <p className="text-sm text-white/80">{item.category}</p>
                     </div>
                   </div>
                 </div>
