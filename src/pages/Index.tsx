@@ -269,20 +269,7 @@ export default function Index() {
               <p className="text-muted-foreground">Премиальное модельное агенство</p>
             </div>
 
-            <div>
-              <h5 className="font-medium mb-3 text-foreground">Социальные сети</h5>
-              <div className="flex gap-4">
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <Icon name="Instagram" size={24} />
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <Icon name="Facebook" size={24} />
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <Icon name="Twitter" size={24} />
-                </a>
-              </div>
-            </div>
+
           </div>
           <div className="border-t border-white/5 pt-8 text-center text-muted-foreground text-sm">
             © 2024 MBA Models. Все права защищены.
