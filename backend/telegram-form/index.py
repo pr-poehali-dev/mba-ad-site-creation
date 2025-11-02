@@ -38,14 +38,27 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     bot_token = os.environ.get('TG_BOT_TOKEN')
     chat_id = os.environ.get('TG_CHAT_ID')
     
-    if not bot_token or not chat_id:
+    print(f"Bot token present: {bool(bot_token)}")
+    print(f"Chat ID present: {bool(chat_id)}")
+    
+    if not bot_token:
         return {
             'statusCode': 500,
             'headers': {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
             },
-            'body': json.dumps({'error': 'Telegram credentials not configured'})
+            'body': json.dumps({'error': 'TG_BOT_TOKEN не настроен. Добавьте токен в секреты.'})
+        }
+    
+    if not chat_id:
+        return {
+            'statusCode': 500,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': json.dumps({'error': 'TG_CHAT_ID не настроен. Добавьте chat_id в секреты.'})
         }
     
     body_str = event.get('body', '{}')
@@ -70,8 +83,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
     payload = {
         'chat_id': chat_id,
-        'text': telegram_message,
-        'parse_mode': 'HTML'
+        'text': telegram_message
     }
     
     try:
@@ -80,6 +92,9 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             data=json.dumps(payload).encode('utf-8'),
             headers={'Content-Type': 'application/json'}
         )
+        
+        print(f"Sending to Telegram: {url[:50]}...")
+        print(f"Chat ID: {chat_id}")
         
         with urllib.request.urlopen(req) as response:
             if response.status == 200:
