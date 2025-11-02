@@ -29,13 +29,17 @@ export default function Index() {
         body: JSON.stringify(formData)
       });
 
+      const data = await response.json();
+
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({ name: '', telegram: '', phone: '', message: '' });
       } else {
+        console.error('Ошибка отправки:', data);
         setSubmitStatus('error');
       }
     } catch (error) {
+      console.error('Fetch error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
