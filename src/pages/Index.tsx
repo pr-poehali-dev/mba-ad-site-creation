@@ -7,14 +7,39 @@ import Icon from '@/components/ui/icon';
 export default function Index() {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
+    telegram: '',
     phone: '',
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', telegram: '', phone: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const [activeService, setActiveService] = useState(0);
@@ -184,11 +209,12 @@ export default function Index() {
             </div>
             <div>
               <Input 
-                type="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                type="text"
+                placeholder="Telegram (@username)"
+                value={formData.telegram}
+                onChange={(e) => setFormData({...formData, telegram: e.target.value})}
                 className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary"
+                required
               />
             </div>
             <div>
@@ -208,9 +234,20 @@ export default function Index() {
                 className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary min-h-[120px]"
               />
             </div>
-            <Button type="submit" size="lg" className="w-full bg-primary text-white hover:bg-primary/90 glow">
-              Отправить заявку
+            <Button 
+              type="submit" 
+              size="lg" 
+              className="w-full bg-primary text-white hover:bg-primary/90 glow"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
             </Button>
+            {submitStatus === 'success' && (
+              <p className="text-center text-green-500">Заявка успешно отправлена!</p>
+            )}
+            {submitStatus === 'error' && (
+              <p className="text-center text-red-500">Ошибка отправки. Попробуйте позже.</p>
+            )}
           </form>
         </div>
       </section>
