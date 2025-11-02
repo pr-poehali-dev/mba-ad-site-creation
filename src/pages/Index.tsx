@@ -271,9 +271,7 @@ export default function Index() {
 
 
           </div>
-          <div className="border-t border-white/5 pt-8 text-center text-muted-foreground text-sm">
-            © 2024 MBA Models. Все права защищены.
-          </div>
+          <div className="border-t border-white/5 pt-8 text-center text-muted-foreground text-sm">© 2023 MBA Corp. Все права защищены.</div>
         </div>
       </footer>
     </div>
