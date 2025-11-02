@@ -88,7 +88,7 @@ export default function Index() {
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
             <span className="hidden sm:inline">Стать моделью</span>
-            <span className="sm:hidden">Стать моделью</span>
+            <span className="sm:hidden">Заявка</span>
           </Button>
         </div>
       </nav>
