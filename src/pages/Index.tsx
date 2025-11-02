@@ -266,7 +266,7 @@ export default function Index() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <h4 className="text-2xl font-bold gradient-text mb-4">MBA</h4>
-              <p className="text-muted-foreground">Модельное агентство мирового уровня</p>
+              <p className="text-muted-foreground">Премиальное модельное агенство</p>
             </div>
 
             <div>
