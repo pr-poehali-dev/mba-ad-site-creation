@@ -21,7 +21,7 @@ export default function Index() {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const response = await fetch('https://functions.poehali.dev/3ec54b6c-3e0e-4583-865c-299314ef0c81', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

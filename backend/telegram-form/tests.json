@@ -1,0 +1,26 @@
+{
+  "tests": [
+    {
+      "name": "Handle OPTIONS request",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Submit form successfully",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Тест",
+        "telegram": "@testuser",
+        "phone": "+79001234567",
+        "message": "Тестовая заявка"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
