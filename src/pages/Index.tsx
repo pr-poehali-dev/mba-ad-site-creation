@@ -81,7 +81,12 @@ export default function Index() {
             <a href="#services" className="text-sm text-foreground/80 hover:text-primary transition-colors">Услуги</a>
             <a href="#about" className="text-sm text-foreground/80 hover:text-primary transition-colors">О нас</a>
           </div>
-          <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary hover:text-white transition-all glow">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="border-primary/50 hover:bg-primary hover:text-white transition-all glow"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             Стать моделью
           </Button>
         </div>
