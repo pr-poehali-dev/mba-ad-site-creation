@@ -162,23 +162,6 @@ export default function Index() {
           <h3 className="text-5xl md:text-6xl font-light">О <span className="gradient-text">нас</span></h3>
           <p className="text-xl text-muted-foreground leading-relaxed">MBA — это модельное агентство с многолетней историей успеха. К каждому сотруднику у нас индивидуальный подход, поэтому мы доводим до результата даже самого начинающего.
 Измени свою жизнь и раскорми свой кошелек прямо сейчас!</p>
-          <div className="grid md:grid-cols-3 gap-8 pt-12">
-            <div className="glass rounded-2xl p-8 space-y-4 hover:glow transition-all duration-300">
-              <Icon name="Award" size={48} className="mx-auto text-primary" />
-              <h4 className="text-4xl font-light gradient-text">50+</h4>
-              <p className="text-muted-foreground">Международных наград</p>
-            </div>
-            <div className="glass rounded-2xl p-8 space-y-4 hover:glow transition-all duration-300">
-              <Icon name="Users" size={48} className="mx-auto text-primary" />
-              <h4 className="text-4xl font-light gradient-text">200+</h4>
-              <p className="text-muted-foreground">Моделей в портфолио</p>
-            </div>
-            <div className="glass rounded-2xl p-8 space-y-4 hover:glow transition-all duration-300">
-              <Icon name="Globe" size={48} className="mx-auto text-primary" />
-              <h4 className="text-4xl font-light gradient-text">30+</h4>
-              <p className="text-muted-foreground">Стран присутствия</p>
-            </div>
-          </div>
         </div>
       </section>
 
