@@ -268,13 +268,7 @@ export default function Index() {
               <h4 className="text-2xl font-bold gradient-text mb-4">MBA</h4>
               <p className="text-muted-foreground">Модельное агентство мирового уровня</p>
             </div>
-            <div>
-              <h5 className="font-medium mb-3 text-foreground">Контакты</h5>
-              <div className="space-y-2 text-muted-foreground">
-                <p>info@mba-models.com</p>
-                <p>+7 (495) 123-45-67</p>
-              </div>
-            </div>
+
             <div>
               <h5 className="font-medium mb-3 text-foreground">Социальные сети</h5>
               <div className="flex gap-4">
