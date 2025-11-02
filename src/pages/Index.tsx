@@ -80,7 +80,6 @@ export default function Index() {
           <div className="hidden md:flex gap-8">
             <a href="#services" className="text-sm text-foreground/80 hover:text-primary transition-colors">Услуги</a>
             <a href="#about" className="text-sm text-foreground/80 hover:text-primary transition-colors">О нас</a>
-            <a href="#contact" className="text-sm text-foreground/80 hover:text-primary transition-colors">Контакты</a>
           </div>
           <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary hover:text-white transition-all glow">
             Стать моделью
