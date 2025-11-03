@@ -2,6 +2,16 @@ import { useEffect, useState } from 'react';
 
 const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
+  const [particles] = useState(() => 
+    Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 4 + 2,
+      duration: Math.random() * 3 + 2,
+      delay: Math.random() * 2,
+    }))
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,7 +29,21 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
   }, [onLoadingComplete]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background overflow-hidden">
+      {particles.map(particle => (
+        <div
+          key={particle.id}
+          className="absolute rounded-full bg-gradient-to-br from-primary/40 to-secondary/40 animate-float"
+          style={{
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            animationDuration: `${particle.duration}s`,
+            animationDelay: `${particle.delay}s`,
+          }}
+        />
+      ))}
       <div className="relative">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-full blur-3xl animate-pulse" />
         
