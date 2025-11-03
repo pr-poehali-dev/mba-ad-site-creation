@@ -90,9 +90,6 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
             <h2 className="text-2xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
               MBA AGENCY
             </h2>
-            <p className="text-sm text-muted-foreground animate-pulse">
-              Загружаем портфолио моделей...
-            </p>
           </div>
         </div>
       </div>
