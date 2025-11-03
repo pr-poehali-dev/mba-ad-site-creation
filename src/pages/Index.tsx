@@ -110,7 +110,7 @@ export default function Index() {
           <div className="relative h-[300px] sm:h-[400px] md:h-[600px] animate-scale-in">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-3xl blur-3xl animate-glow-pulse" />
             <img 
-              src="https://cdn.poehali.dev/projects/812356d1-f93d-419f-abe3-3596f2636c27/files/c1cd7c48-9a7f-4e66-b972-26f6e19eba65.jpg"
+              src="https://cdn.poehali.dev/projects/812356d1-f93d-419f-abe3-3596f2636c27/files/18a7457a-f032-4619-9568-623c8c738840.jpg"
               alt="MBA Agency"
               className="relative w-full h-full object-cover rounded-3xl border border-white/10"
             />
