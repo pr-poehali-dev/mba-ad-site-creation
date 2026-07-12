@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Icon from '@/components/ui/icon';
 
 export default function Index() {
@@ -48,6 +49,29 @@ export default function Index() {
 
   const [activeService, setActiveService] = useState(0);
 
+  const advantages = [
+    { icon: 'GraduationCap', title: 'Обучение', description: 'Бесплатные курсы по подиуму, съёмке и работе с брендами' },
+    { icon: 'Users', title: 'Комьюнити', description: 'Дружная команда моделей и менторов, которые всегда поддержат' },
+    { icon: 'TrendingUp', title: 'Карьерный рост', description: 'Строим долгосрочную карьеру, а не разовые проекты' },
+    { icon: 'Clock', title: 'Гибкий график', description: 'Сама планируешь съёмки и показы под свой ритм жизни' },
+    { icon: 'ShieldCheck', title: 'Надёжность', description: 'Официальное сотрудничество и прозрачные условия' },
+    { icon: 'Heart', title: 'Забота', description: 'Индивидуальный подход к каждой модели агентства' }
+  ];
+
+  const steps = [
+    { step: '01', title: 'Оставь заявку', description: 'Заполни форму на сайте — это займёт пару минут' },
+    { step: '02', title: 'Собеседование', description: 'Познакомимся, расскажем про условия и ответим на вопросы' },
+    { step: '03', title: 'Обучение', description: 'Пройдёшь базовую подготовку с нашими наставниками' },
+    { step: '04', title: 'Старт карьеры', description: 'Первые кастинги, съёмки и показы с поддержкой агентства' }
+  ];
+
+  const faq = [
+    { q: 'Нужен ли опыт, чтобы стать моделью MBA?', a: 'Нет, мы принимаем и новичков. Для начинающих проводим обучение и помогаем собрать портфолио.' },
+    { q: 'Сколько можно зарабатывать?', a: 'Доход зависит от загрузки и количества проектов. Мы помогаем выстроить стабильный поток заказов.' },
+    { q: 'Какой график работы?', a: 'Гибкий — ты сама выбираешь съёмки, показы и мероприятия, в которых готова участвовать.' },
+    { q: 'В каких городах вы работаете?', a: 'Основные проекты — в Москве, но есть возможности для удалённого и выездного сотрудничества.' }
+  ];
+
   const services = [
     {
       id: 0,
@@ -79,7 +103,11 @@ export default function Index() {
           <h1 className="text-xl sm:text-2xl font-bold gradient-text">MBA</h1>
           <div className="hidden md:flex gap-8">
             <a href="#services" className="text-sm text-foreground/80 hover:text-primary transition-colors">Услуги</a>
+            <a href="#advantages" className="text-sm text-foreground/80 hover:text-primary transition-colors">Преимущества</a>
+            <a href="#earnings" className="text-sm text-foreground/80 hover:text-primary transition-colors">Заработок</a>
+            <a href="#steps" className="text-sm text-foreground/80 hover:text-primary transition-colors">Как начать</a>
             <a href="#about" className="text-sm text-foreground/80 hover:text-primary transition-colors">О нас</a>
+            <a href="#faq" className="text-sm text-foreground/80 hover:text-primary transition-colors">FAQ</a>
           </div>
           <Button 
             variant="outline" 
@@ -189,6 +217,79 @@ export default function Index() {
         </div>
       </section>
 
+      <section id="advantages" className="py-12 sm:py-20 px-4 sm:px-6 relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[150px]" />
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-8 sm:mb-16">
+            <h3 className="text-3xl sm:text-5xl md:text-6xl font-light mb-4">Почему <span className="gradient-text">MBA</span></h3>
+            <p className="text-muted-foreground text-lg">Всё, что нужно для успешной карьеры модели</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {advantages.map((item, index) => (
+              <div
+                key={index}
+                className="glass rounded-2xl p-6 sm:p-8 hover:bg-white/5 transition-all duration-300 animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                  <Icon name={item.icon as any} size={24} className="text-primary" />
+                </div>
+                <h4 className="font-medium text-lg mb-2">{item.title}</h4>
+                <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="earnings" className="py-12 sm:py-20 px-4 sm:px-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-[150px]" />
+
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="glass rounded-2xl sm:rounded-3xl p-8 sm:p-16 text-center space-y-6 glow">
+            <p className="text-sm uppercase tracking-widest text-muted-foreground">Условия сотрудничества</p>
+            <h3 className="text-4xl sm:text-6xl md:text-7xl font-light">
+              Зарабатывай <span className="gradient-text">от 1 800 000</span><br className="hidden sm:block" /> руб. в год
+            </h3>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Доход растёт вместе с твоим опытом: съёмки, показы, реклама и сотрудничество с брендами. Мы даём стабильный поток проектов и прозрачные условия оплаты.
+            </p>
+            <Button
+              size="lg"
+              className="bg-primary text-white hover:bg-primary/90 glow"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Узнать подробнее
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section id="steps" className="py-12 sm:py-20 px-4 sm:px-6 relative">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-8 sm:mb-16">
+            <h3 className="text-3xl sm:text-5xl md:text-6xl font-light mb-4">Как <span className="gradient-text">начать</span></h3>
+            <p className="text-muted-foreground text-lg">Всего 4 шага до старта карьеры модели</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {steps.map((item, index) => (
+              <div
+                key={index}
+                className="glass rounded-2xl p-6 sm:p-8 relative animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <span className="text-4xl sm:text-5xl font-light gradient-text">{item.step}</span>
+                <h4 className="font-medium text-lg mt-4 mb-2">{item.title}</h4>
+                <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="about" className="py-12 sm:py-20 px-4 sm:px-6 relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px]" />
         
@@ -196,6 +297,32 @@ export default function Index() {
           <h3 className="text-3xl sm:text-5xl md:text-6xl font-light">О <span className="gradient-text">нас</span></h3>
           <p className="text-base sm:text-xl text-muted-foreground leading-relaxed">MBA — это модельное агентство с многолетней историей успеха. К каждому сотруднику у нас индивидуальный подход, поэтому мы доводим до результата даже самого начинающего.
 Измени свою жизнь и раскорми свой кошелек прямо сейчас!</p>
+        </div>
+      </section>
+
+      <section id="faq" className="py-12 sm:py-20 px-4 sm:px-6 relative">
+        <div className="absolute top-1/2 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-[150px] -translate-y-1/2" />
+
+        <div className="max-w-3xl mx-auto relative z-10">
+          <div className="text-center mb-8 sm:mb-16">
+            <h3 className="text-3xl sm:text-5xl md:text-6xl font-light mb-4">Частые <span className="gradient-text">вопросы</span></h3>
+            <p className="text-muted-foreground text-lg">Ответы на то, что чаще всего спрашивают</p>
+          </div>
+
+          <div className="glass rounded-2xl sm:rounded-3xl p-6 sm:p-8">
+            <Accordion type="single" collapsible className="w-full">
+              {faq.map((item, index) => (
+                <AccordionItem key={index} value={`item-${index}`} className="border-white/10">
+                  <AccordionTrigger className="text-left hover:no-underline hover:text-primary">
+                    {item.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </div>
       </section>
 
