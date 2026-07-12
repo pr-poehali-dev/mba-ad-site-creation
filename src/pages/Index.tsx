@@ -65,6 +65,22 @@ export default function Index() {
     { step: '04', title: 'Старт карьеры', description: 'Первые кастинги, съёмки и показы с поддержкой агентства' }
   ];
 
+  const workConditions = [
+    { icon: 'Percent', title: 'До 70% с дохода', description: 'Прозрачная система выплат — большую часть дохода получаешь ты' },
+    { icon: 'CalendarDays', title: 'Свободный график', description: 'Смены днём и ночью — выбираешь удобное время сама' },
+    { icon: 'Wallet', title: 'Выплаты каждую неделю', description: 'Получай деньги регулярно, без задержек и скрытых условий' },
+    { icon: 'Camera', title: 'Студия и оборудование', description: 'Профессиональная техника, свет и локации — всё за наш счёт' },
+    { icon: 'UserRound', title: 'Личный менеджер', description: 'Наставник ведёт тебя от первой съёмки до стабильного дохода' },
+    { icon: 'Lock', title: 'Полная анонимность', description: 'Гарантируем конфиденциальность и безопасность данных' }
+  ];
+
+  const [calc, setCalc] = useState({ hoursPerDay: 6, daysPerWeek: 5 });
+  const RATE_PER_HOUR = 1200;
+  const weekly = calc.hoursPerDay * calc.daysPerWeek * RATE_PER_HOUR;
+  const monthly = weekly * 4;
+  const yearly = monthly * 12;
+  const formatMoney = (n: number) => new Intl.NumberFormat('ru-RU').format(n) + ' ₽';
+
   const faq = [
     { q: 'Нужен ли опыт, чтобы стать моделью MBA?', a: 'Нет, мы принимаем и новичков. Для начинающих проводим обучение и помогаем собрать портфолио.' },
     { q: 'Сколько можно зарабатывать?', a: 'Доход зависит от загрузки и количества проектов. Мы помогаем выстроить стабильный поток заказов.' },
@@ -104,7 +120,8 @@ export default function Index() {
           <div className="hidden md:flex gap-8">
             <a href="#services" className="text-sm text-foreground/80 hover:text-primary transition-colors">Услуги</a>
             <a href="#advantages" className="text-sm text-foreground/80 hover:text-primary transition-colors">Преимущества</a>
-            <a href="#earnings" className="text-sm text-foreground/80 hover:text-primary transition-colors">Заработок</a>
+            <a href="#work" className="text-sm text-foreground/80 hover:text-primary transition-colors">Работа</a>
+            <a href="#earnings" className="text-sm text-foreground/80 hover:text-primary transition-colors">Калькулятор</a>
             <a href="#steps" className="text-sm text-foreground/80 hover:text-primary transition-colors">Как начать</a>
             <a href="#about" className="text-sm text-foreground/80 hover:text-primary transition-colors">О нас</a>
             <a href="#faq" className="text-sm text-foreground/80 hover:text-primary transition-colors">FAQ</a>
@@ -244,25 +261,102 @@ export default function Index() {
         </div>
       </section>
 
+      <section id="work" className="py-12 sm:py-20 px-4 sm:px-6 relative">
+        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px] -translate-y-1/2" />
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-8 sm:mb-16">
+            <h3 className="text-3xl sm:text-5xl md:text-6xl font-light mb-4">Работа <span className="gradient-text">моделью</span></h3>
+            <p className="text-muted-foreground text-lg">Условия, на которых ты работаешь с нами</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {workConditions.map((item, index) => (
+              <div
+                key={index}
+                className="glass rounded-2xl p-6 sm:p-8 hover:bg-white/5 transition-all duration-300 animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                  <Icon name={item.icon as any} size={24} className="text-primary" />
+                </div>
+                <h4 className="font-medium text-lg mb-2">{item.title}</h4>
+                <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="earnings" className="py-12 sm:py-20 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-[150px]" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/20 rounded-full blur-[150px]" />
 
         <div className="max-w-5xl mx-auto relative z-10">
-          <div className="glass rounded-2xl sm:rounded-3xl p-8 sm:p-16 text-center space-y-6 glow">
-            <p className="text-sm uppercase tracking-widest text-muted-foreground">Условия сотрудничества</p>
-            <h3 className="text-4xl sm:text-6xl md:text-7xl font-light">
-              Зарабатывай <span className="gradient-text">от 1 800 000</span><br className="hidden sm:block" /> руб. в год
-            </h3>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Доход растёт вместе с твоим опытом: съёмки, показы, реклама и сотрудничество с брендами. Мы даём стабильный поток проектов и прозрачные условия оплаты.
-            </p>
-            <Button
-              size="lg"
-              className="bg-primary text-white hover:bg-primary/90 glow"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Узнать подробнее
-            </Button>
+          <div className="text-center mb-8 sm:mb-12">
+            <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">Калькулятор заработка</p>
+            <h3 className="text-3xl sm:text-5xl md:text-6xl font-light">Сколько ты <span className="gradient-text">заработаешь</span></h3>
+            <p className="text-muted-foreground text-lg mt-4">Подвигай ползунки и увидь свой потенциальный доход</p>
+          </div>
+
+          <div className="glass rounded-2xl sm:rounded-3xl p-6 sm:p-12 glow">
+            <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+              <div className="space-y-8">
+                <div>
+                  <div className="flex justify-between items-baseline mb-3">
+                    <label className="text-sm text-muted-foreground">Часов в день</label>
+                    <span className="text-2xl font-light gradient-text">{calc.hoursPerDay} ч</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={1}
+                    max={12}
+                    value={calc.hoursPerDay}
+                    onChange={(e) => setCalc({ ...calc, hoursPerDay: Number(e.target.value) })}
+                    className="w-full accent-primary cursor-pointer"
+                  />
+                </div>
+
+                <div>
+                  <div className="flex justify-between items-baseline mb-3">
+                    <label className="text-sm text-muted-foreground">Дней в неделю</label>
+                    <span className="text-2xl font-light gradient-text">{calc.daysPerWeek} дн</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={1}
+                    max={7}
+                    value={calc.daysPerWeek}
+                    onChange={(e) => setCalc({ ...calc, daysPerWeek: Number(e.target.value) })}
+                    className="w-full accent-primary cursor-pointer"
+                  />
+                </div>
+
+                <p className="text-xs text-muted-foreground">Расчёт ориентировочный, при средней ставке {formatMoney(RATE_PER_HOUR)} в час. Реальный доход зависит от опыта и загрузки.</p>
+              </div>
+
+              <div className="space-y-4">
+                <div className="glass rounded-2xl p-6 flex justify-between items-center">
+                  <span className="text-muted-foreground">В неделю</span>
+                  <span className="text-xl sm:text-2xl font-light">{formatMoney(weekly)}</span>
+                </div>
+                <div className="glass rounded-2xl p-6 flex justify-between items-center">
+                  <span className="text-muted-foreground">В месяц</span>
+                  <span className="text-xl sm:text-2xl font-light">{formatMoney(monthly)}</span>
+                </div>
+                <div className="glass rounded-2xl p-6 flex justify-between items-center bg-primary/10 border-primary/50 glow">
+                  <span className="text-foreground">В год</span>
+                  <span className="text-2xl sm:text-3xl font-light gradient-text">{formatMoney(yearly)}</span>
+                </div>
+                <Button
+                  size="lg"
+                  className="w-full bg-primary text-white hover:bg-primary/90 glow"
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Хочу так зарабатывать
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
