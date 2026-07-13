@@ -123,7 +123,6 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
           <h1 className="text-xl sm:text-2xl font-bold gradient-text">MBA</h1>
           <div className="hidden md:flex gap-8">
-            <a href="#services" className="text-sm text-foreground/80 hover:text-primary transition-colors">Услуги</a>
             <a href="#advantages" className="text-sm text-foreground/80 hover:text-primary transition-colors">Преимущества</a>
             <a href="#work" className="text-sm text-foreground/80 hover:text-primary transition-colors">Работа</a>
             <a href="#earnings" className="text-sm text-foreground/80 hover:text-primary transition-colors">Калькулятор</a>
@@ -164,77 +163,6 @@ export default function Index() {
               alt="MBA Agency"
               className="relative w-full h-full object-cover rounded-3xl border border-white/10"
             />
-          </div>
-        </div>
-      </section>
-
-      <section id="services" className="py-12 sm:py-20 px-4 sm:px-6 relative">
-        <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/20 rounded-full blur-[150px] -translate-y-1/2" />
-        <div className="absolute top-1/2 right-0 w-96 h-96 bg-secondary/20 rounded-full blur-[150px] -translate-y-1/2" />
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-8 sm:mb-16">
-            <h3 className="text-3xl sm:text-5xl md:text-6xl font-light mb-4">Наши <span className="gradient-text">услуги</span></h3>
-            <p className="text-muted-foreground text-lg">Профессиональный сервис мирового уровня</p>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8 sm:mb-12">
-            {services.map((service) => (
-              <button
-                key={service.id}
-                onClick={() => setActiveService(service.id)}
-                className={`glass rounded-2xl p-6 text-left transition-all duration-300 ${
-                  activeService === service.id 
-                    ? 'glow bg-primary/10 border-primary/50' 
-                    : 'hover:bg-white/5'
-                }`}
-              >
-                <Icon 
-                  name={service.icon as any} 
-                  size={32} 
-                  className={`mb-4 transition-colors ${
-                    activeService === service.id ? 'text-primary' : 'text-muted-foreground'
-                  }`} 
-                />
-                <h4 className={`font-medium mb-2 transition-colors ${
-                  activeService === service.id ? 'gradient-text' : 'text-foreground'
-                }`}>
-                  {service.title}
-                </h4>
-              </button>
-            ))}
-          </div>
-
-          <div className="glass rounded-2xl sm:rounded-3xl p-6 sm:p-12 animate-fade-in">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12 items-center">
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-3 glass rounded-full px-6 py-2">
-                  <Icon name={services[activeService].icon as any} size={24} className="text-primary" />
-                  <span className="text-sm text-muted-foreground">{services[activeService].title}</span>
-                </div>
-                <h4 className="text-2xl sm:text-3xl md:text-4xl font-light leading-tight">
-                  {services[activeService].description}
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-4">
-                  {services[activeService].features.map((feature, index) => (
-                    <div 
-                      key={index} 
-                      className="flex items-center gap-3 animate-fade-in"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      <div className="w-2 h-2 rounded-full bg-primary glow" />
-                      <span className="text-muted-foreground">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="relative h-[200px] sm:h-[300px] md:h-[400px] hidden sm:block">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-2xl blur-3xl animate-glow-pulse" />
-                <div className="relative h-full glass rounded-2xl flex items-center justify-center">
-                  <Icon name={services[activeService].icon as any} size={120} className="text-primary/20" />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
