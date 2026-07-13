@@ -74,8 +74,13 @@ export default function Index() {
     { icon: 'Lock', title: 'Полная анонимность', description: 'Гарантируем конфиденциальность и безопасность данных' }
   ];
 
-  const [calc, setCalc] = useState({ hoursPerDay: 6, daysPerWeek: 5 });
-  const RATE_PER_HOUR = 1200;
+  const levels = [
+    { id: 'newbie', label: 'Новичок', rate: 1000 },
+    { id: 'experienced', label: 'Опытный', rate: 1500 },
+    { id: 'pro', label: 'Профи', rate: 2200 }
+  ];
+  const [calc, setCalc] = useState({ hoursPerDay: 6, daysPerWeek: 5, level: 'newbie' });
+  const RATE_PER_HOUR = levels.find((l) => l.id === calc.level)?.rate ?? 1000;
   const weekly = calc.hoursPerDay * calc.daysPerWeek * RATE_PER_HOUR;
   const monthly = weekly * 4;
   const yearly = monthly * 12;
@@ -303,14 +308,33 @@ export default function Index() {
             <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
               <div className="space-y-8">
                 <div>
+                  <label className="text-sm text-muted-foreground block mb-3">Уровень</label>
+                  <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                    {levels.map((lvl) => (
+                      <button
+                        key={lvl.id}
+                        onClick={() => setCalc({ ...calc, level: lvl.id })}
+                        className={`glass rounded-xl py-3 px-2 text-sm transition-all duration-300 ${
+                          calc.level === lvl.id
+                            ? 'glow bg-primary/10 border-primary/50 gradient-text font-medium'
+                            : 'text-muted-foreground hover:bg-white/5'
+                        }`}
+                      >
+                        {lvl.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
                   <div className="flex justify-between items-baseline mb-3">
-                    <label className="text-sm text-muted-foreground">Часов в день</label>
+                    <label className="text-sm text-muted-foreground">Часов в смене</label>
                     <span className="text-2xl font-light gradient-text">{calc.hoursPerDay} ч</span>
                   </div>
                   <input
                     type="range"
-                    min={1}
-                    max={12}
+                    min={6}
+                    max={10}
                     value={calc.hoursPerDay}
                     onChange={(e) => setCalc({ ...calc, hoursPerDay: Number(e.target.value) })}
                     className="w-full accent-primary cursor-pointer"
