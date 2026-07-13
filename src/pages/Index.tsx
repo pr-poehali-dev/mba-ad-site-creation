@@ -348,7 +348,7 @@ export default function Index() {
                   </div>
                   <input
                     type="range"
-                    min={1}
+                    min={5}
                     max={7}
                     value={calc.daysPerWeek}
                     onChange={(e) => setCalc({ ...calc, daysPerWeek: Number(e.target.value) })}
