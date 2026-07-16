@@ -258,7 +258,7 @@ export default function Index() {
                   />
                 </div>
 
-                <p className="text-xs text-muted-foreground">Расчёт ориентировочный, при средней ставке {formatMoney(RATE_PER_HOUR)} в час. Реальный доход зависит от опыта и загрузки.</p>
+                <p className="text-xs text-muted-foreground">Расчеты ориентировочные, основанные на средних показателях заработка реальных сотрудников</p>
               </div>
 
               <div className="space-y-4">
