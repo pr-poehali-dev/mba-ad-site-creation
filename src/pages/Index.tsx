@@ -395,18 +395,6 @@ export default function Index() {
             </div>
             <div>
               <Input 
-                type="text"
-                placeholder="Telegram (при наличии)"
-                value={formData.telegram}
-                onChange={(e) => { setFormData({...formData, telegram: e.target.value}); if (telegramError) setTelegramError(''); }}
-                className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary"
-              />
-              {telegramError && (
-                <p className="text-red-500 text-sm mt-1">{telegramError}</p>
-              )}
-            </div>
-            <div>
-              <Input 
                 type="tel"
                 placeholder="+7 (999) 123-45-67"
                 value={formData.phone}
@@ -416,6 +404,18 @@ export default function Index() {
               />
               {phoneError && (
                 <p className="text-red-500 text-sm mt-1">{phoneError}</p>
+              )}
+            </div>
+            <div>
+              <Input 
+                type="text"
+                placeholder="Telegram (при наличии)"
+                value={formData.telegram}
+                onChange={(e) => { setFormData({...formData, telegram: e.target.value}); if (telegramError) setTelegramError(''); }}
+                className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary"
+              />
+              {telegramError && (
+                <p className="text-red-500 text-sm mt-1">{telegramError}</p>
               )}
             </div>
             <div>
