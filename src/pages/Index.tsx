@@ -209,8 +209,12 @@ export default function Index() {
           </div>
         </div>
 
-        {mobileMenuOpen && (
-          <div className="md:hidden border-t border-white/5 px-4 py-4 flex flex-col gap-3 animate-fade-in">
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${
+            mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="border-t border-white/5 px-4 py-4 flex flex-col gap-3">
             {navItems.map(({ id, label }) => (
               <a
                 key={id}
@@ -224,7 +228,7 @@ export default function Index() {
               </a>
             ))}
           </div>
-        )}
+        </div>
       </nav>
 
       <section className="pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 min-h-screen flex items-center relative overflow-hidden">
