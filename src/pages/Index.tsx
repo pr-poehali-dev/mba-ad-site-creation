@@ -73,9 +73,9 @@ export default function Index() {
   ];
 
   const levels = [
-    { id: 'newbie', label: 'Новичок', rate: 1500 },
-    { id: 'experienced', label: 'Опытный', rate: 2200 },
-    { id: 'pro', label: 'Профи', rate: 3000 }
+    { id: 'newbie', label: 'Новичок', rate: 1400 },
+    { id: 'experienced', label: 'Опытный', rate: 2150 },
+    { id: 'pro', label: 'Профи', rate: 2950 }
   ];
   const [calc, setCalc] = useState({ hoursPerDay: 6, daysPerWeek: 5, level: 'newbie' });
   const RATE_PER_HOUR = levels.find((l) => l.id === calc.level)?.rate ?? 1000;
