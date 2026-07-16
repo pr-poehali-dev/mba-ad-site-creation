@@ -16,6 +16,7 @@ export default function Index() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [phoneError, setPhoneError] = useState('');
+  const [telegramError, setTelegramError] = useState('');
 
   const formatPhone = (value: string) => {
     let digits = value.replace(/\D/g, '');
@@ -40,6 +41,12 @@ export default function Index() {
       return;
     }
     setPhoneError('');
+
+    if (formData.telegram.trim() && !formData.telegram.trim().startsWith('@')) {
+      setTelegramError('Telegram должен начинаться с @');
+      return;
+    }
+    setTelegramError('');
 
     setIsSubmitting(true);
     setSubmitStatus('idle');
@@ -391,9 +398,12 @@ export default function Index() {
                 type="text"
                 placeholder="Telegram (при наличии)"
                 value={formData.telegram}
-                onChange={(e) => setFormData({...formData, telegram: e.target.value})}
+                onChange={(e) => { setFormData({...formData, telegram: e.target.value}); if (telegramError) setTelegramError(''); }}
                 className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary"
               />
+              {telegramError && (
+                <p className="text-red-500 text-sm mt-1">{telegramError}</p>
+              )}
             </div>
             <div>
               <Input 
