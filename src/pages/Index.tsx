@@ -17,11 +17,25 @@ export default function Index() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [phoneError, setPhoneError] = useState('');
 
+  const formatPhone = (value: string) => {
+    let digits = value.replace(/\D/g, '');
+    if (digits.startsWith('8')) digits = '7' + digits.slice(1);
+    if (!digits.startsWith('7')) digits = '7' + digits;
+    digits = digits.slice(0, 11);
+    const rest = digits.slice(1);
+    let result = '+7';
+    if (rest.length > 0) result += ' (' + rest.slice(0, 3);
+    if (rest.length >= 3) result += ') ' + rest.slice(3, 6);
+    if (rest.length >= 6) result += '-' + rest.slice(6, 8);
+    if (rest.length >= 8) result += '-' + rest.slice(8, 10);
+    return result;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const digits = formData.phone.replace(/\D/g, '');
-    if (digits.length < 10 || digits.length > 15) {
+    if (digits.length !== 11) {
       setPhoneError('Введите корректный номер телефона');
       return;
     }
@@ -386,7 +400,7 @@ export default function Index() {
                 type="tel"
                 placeholder="Телефон"
                 value={formData.phone}
-                onChange={(e) => { setFormData({...formData, phone: e.target.value}); if (phoneError) setPhoneError(''); }}
+                onChange={(e) => { setFormData({...formData, phone: formatPhone(e.target.value)}); if (phoneError) setPhoneError(''); }}
                 className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary"
                 required
               />
