@@ -38,8 +38,17 @@ export default function Index() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (formData.name.trim().length < 2) {
+    const name = formData.name.trim();
+    if (name.length < 2) {
       setNameError('Пожалуйста, введите ваше имя');
+      return;
+    }
+    if (name.length > 12) {
+      setNameError('Имя не должно превышать 12 символов');
+      return;
+    }
+    if (!/^[а-яёА-ЯЁ\s-]+$/.test(name)) {
+      setNameError('Имя должно быть на русском языке');
       return;
     }
     setNameError('');
@@ -500,6 +509,7 @@ export default function Index() {
             <div>
               <Input 
                 placeholder="Как вас зовут?"
+                maxLength={12}
                 value={formData.name}
                 onChange={(e) => { setFormData({...formData, name: e.target.value}); if (nameError) setNameError(''); }}
                 className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary"
