@@ -127,7 +127,7 @@ export default function Index() {
               <span className="gradient-text">агентство</span><br />
               MBA
             </h2>
-            <p className="text-lg text-muted-foreground max-w-md leading-relaxed">Мы создаём будущее индустрии веб - моделинга, открывая таланты и строя карьеры высокого уровня.</p>
+            <p className="text-lg text-muted-foreground max-w-md leading-relaxed">Мы создаём будущее веб индустрии, открывая таланты и строя карьеры высокого уровня.</p>
 
           </div>
           <div className="relative h-[300px] sm:h-[400px] md:h-[600px] animate-scale-in">
