@@ -201,7 +201,7 @@ export default function Index() {
 
         <div className="max-w-5xl mx-auto relative z-10">
           <div className="text-center mb-8 sm:mb-12">
-            <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">Калькулятор заработка</p>
+            <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4"> </p>
             <h3 className="text-3xl sm:text-5xl md:text-6xl font-light">Сколько ты <span className="gradient-text">заработаешь</span></h3>
             <p className="text-muted-foreground text-lg mt-4">Подвигай ползунки и увидь свой потенциальный доход</p>
           </div>
