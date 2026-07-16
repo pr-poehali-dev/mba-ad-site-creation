@@ -15,9 +15,18 @@ export default function Index() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [phoneError, setPhoneError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const digits = formData.phone.replace(/\D/g, '');
+    if (digits.length < 10 || digits.length > 15) {
+      setPhoneError('Введите корректный номер телефона');
+      return;
+    }
+    setPhoneError('');
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
@@ -377,9 +386,13 @@ export default function Index() {
                 type="tel"
                 placeholder="Телефон"
                 value={formData.phone}
-                onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                onChange={(e) => { setFormData({...formData, phone: e.target.value}); if (phoneError) setPhoneError(''); }}
                 className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary"
+                required
               />
+              {phoneError && (
+                <p className="text-red-500 text-sm mt-1">{phoneError}</p>
+              )}
             </div>
             <div>
               <Textarea 
