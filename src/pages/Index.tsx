@@ -200,11 +200,24 @@ export default function Index() {
               <span className="sm:hidden">Заявка</span>
             </Button>
             <button
-              className="md:hidden w-9 h-9 flex items-center justify-center text-foreground"
+              className="md:hidden relative w-9 h-9 flex items-center justify-center text-foreground"
               onClick={() => setMobileMenuOpen((v) => !v)}
               aria-label="Меню"
             >
-              <Icon name={mobileMenuOpen ? 'X' : 'Menu'} size={24} />
+              <span
+                className={`absolute transition-all duration-300 ${
+                  mobileMenuOpen ? 'opacity-0 rotate-90 scale-75' : 'opacity-100 rotate-0 scale-100'
+                }`}
+              >
+                <Icon name="Menu" size={24} />
+              </span>
+              <span
+                className={`absolute transition-all duration-300 ${
+                  mobileMenuOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-75'
+                }`}
+              >
+                <Icon name="X" size={24} />
+              </span>
             </button>
           </div>
         </div>
