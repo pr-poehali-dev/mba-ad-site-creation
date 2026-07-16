@@ -48,7 +48,7 @@ export default function Index() {
   };
 
   const advantages = [
-    { icon: 'GraduationCap', title: 'Обучение', description: 'Первые дни обучения в которые ты уже будешь получать ставку' },
+    { icon: 'GraduationCap', title: 'Обучение', description: 'Первые дни обучения, в которые ты уже будешь получать ставку' },
     { icon: 'Users', title: 'Комьюнити', description: 'Дружная команда моделей и менторов, которые всегда поддержат' },
     { icon: 'TrendingUp', title: 'Карьерный рост', description: 'Строим долгосрочную карьеру, а не разовые проекты' },
     { icon: 'Clock', title: 'Гибкий график', description: 'Сама планируешь съёмки и показы под свой ритм жизни' },
