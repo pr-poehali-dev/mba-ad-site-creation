@@ -366,7 +366,7 @@ export default function Index() {
             <div>
               <Input 
                 type="text"
-                placeholder="Telegram (@username)"
+                placeholder="Telegram (при наличии)"
                 value={formData.telegram}
                 onChange={(e) => setFormData({...formData, telegram: e.target.value})}
                 className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary"
