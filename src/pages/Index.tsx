@@ -5,6 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Icon from '@/components/ui/icon';
 import Reveal from '@/components/Reveal';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export default function Index() {
   const [formData, setFormData] = useState({
@@ -463,6 +464,8 @@ export default function Index() {
           <div className="border-t border-white/5 pt-8 text-center text-muted-foreground text-sm">© 2023 MBA Corp. Все права защищены.</div>
         </div>
       </footer>
+
+      <ScrollToTop />
     </div>
   );
 }
