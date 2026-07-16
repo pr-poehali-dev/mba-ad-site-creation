@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -123,6 +123,33 @@ export default function Index() {
     { q: 'В каких городах вы работаете?', a: 'Основной проект — в Краснодаре, но есть возможность для удалённого сотрудничества.' }
   ];
 
+  const navItems = [
+    { id: 'advantages', label: 'Преимущества' },
+    { id: 'work', label: 'Работа' },
+    { id: 'earnings', label: 'Калькулятор' },
+    { id: 'steps', label: 'Как начать' },
+    { id: 'about', label: 'О нас' },
+    { id: 'faq', label: 'FAQ' },
+  ];
+
+  const [activeSection, setActiveSection] = useState('');
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    );
+    navItems.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
   const scrollToSection = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -134,12 +161,18 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
           <h1 className="text-xl sm:text-2xl font-bold gradient-text">MBA</h1>
           <div className="hidden md:flex gap-8">
-            <a href="#advantages" onClick={(e) => scrollToSection(e, 'advantages')} className="text-sm text-foreground/80 hover:text-primary transition-colors">Преимущества</a>
-            <a href="#work" onClick={(e) => scrollToSection(e, 'work')} className="text-sm text-foreground/80 hover:text-primary transition-colors">Работа</a>
-            <a href="#earnings" onClick={(e) => scrollToSection(e, 'earnings')} className="text-sm text-foreground/80 hover:text-primary transition-colors">Калькулятор</a>
-            <a href="#steps" onClick={(e) => scrollToSection(e, 'steps')} className="text-sm text-foreground/80 hover:text-primary transition-colors">Как начать</a>
-            <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="text-sm text-foreground/80 hover:text-primary transition-colors">О нас</a>
-            <a href="#faq" onClick={(e) => scrollToSection(e, 'faq')} className="text-sm text-foreground/80 hover:text-primary transition-colors">FAQ</a>
+            {navItems.map(({ id, label }) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                onClick={(e) => scrollToSection(e, id)}
+                className={`text-sm transition-colors ${
+                  activeSection === id ? 'text-primary font-medium' : 'text-foreground/80 hover:text-primary'
+                }`}
+              >
+                {label}
+              </a>
+            ))}
           </div>
           <Button 
             variant="outline" 
