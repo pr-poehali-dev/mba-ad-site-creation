@@ -51,8 +51,8 @@ export default function Index() {
     { icon: 'GraduationCap', title: 'Обучение', description: 'Первые дни обучения, в которые ты уже будешь получать ставку' },
     { icon: 'Users', title: 'Комьюнити', description: 'Дружная команда моделей и менторов, которые всегда поддержат' },
     { icon: 'TrendingUp', title: 'Карьерный рост', description: 'Строим долгосрочную карьеру, а не разовые проекты' },
-    { icon: 'Clock', title: 'Гибкий график', description: 'Сама планируешь съёмки и показы под свой ритм жизни' },
-    { icon: 'ShieldCheck', title: 'Надёжность', description: 'Официальное сотрудничество и прозрачные условия' },
+    { icon: 'Clock', title: 'Гибкий график', description: 'Сама планируешь график и показы под свой ритм жизни' },
+    { icon: 'ShieldCheck', title: 'Надёжность', description: 'Уверенность в компании и прозрачные условия' },
     { icon: 'Heart', title: 'Забота', description: 'Индивидуальный подход к каждой модели агентства' }
   ];
 
