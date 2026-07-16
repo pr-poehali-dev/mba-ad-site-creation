@@ -17,6 +17,7 @@ export default function Index() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [nameError, setNameError] = useState('');
   const [phoneError, setPhoneError] = useState('');
   const [telegramError, setTelegramError] = useState('');
 
@@ -36,6 +37,12 @@ export default function Index() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (formData.name.trim().length < 2) {
+      setNameError('Пожалуйста, введите ваше имя');
+      return;
+    }
+    setNameError('');
 
     const digits = formData.phone.replace(/\D/g, '');
     if (digits.length !== 11) {
@@ -492,11 +499,14 @@ export default function Index() {
           <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 glass rounded-2xl sm:rounded-3xl p-6 sm:p-8">
             <div>
               <Input 
-                placeholder="Ваше имя"
+                placeholder="Как вас зовут?"
                 value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                onChange={(e) => { setFormData({...formData, name: e.target.value}); if (nameError) setNameError(''); }}
                 className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary"
               />
+              {nameError && (
+                <p className="text-red-500 text-sm mt-1">{nameError}</p>
+              )}
             </div>
             <div>
               <Input 
