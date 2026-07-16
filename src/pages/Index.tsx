@@ -244,6 +244,13 @@ export default function Index() {
         </div>
       </nav>
 
+      <div
+        onClick={() => setMobileMenuOpen(false)}
+        className={`md:hidden fixed inset-0 top-[57px] bg-black/60 backdrop-blur-sm z-40 transition-opacity duration-300 ${
+          mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+      />
+
       <section className="pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 min-h-screen flex items-center relative overflow-hidden">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full blur-[120px] animate-float" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-[120px] animate-float" style={{ animationDelay: '2s' }} />
