@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Icon from '@/components/ui/icon';
+import Reveal from '@/components/Reveal';
 
 export default function Index() {
   const [formData, setFormData] = useState({
@@ -176,7 +177,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="advantages" className="py-12 sm:py-20 px-4 sm:px-6 relative">
+      <Reveal className="block"><section id="advantages" className="py-12 sm:py-20 px-4 sm:px-6 relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[150px]" />
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -201,9 +202,9 @@ export default function Index() {
             ))}
           </div>
         </div>
-      </section>
+      </section></Reveal>
 
-      <section id="work" className="py-12 sm:py-20 px-4 sm:px-6 relative">
+      <Reveal className="block"><section id="work" className="py-12 sm:py-20 px-4 sm:px-6 relative">
         <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px] -translate-y-1/2" />
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -228,9 +229,9 @@ export default function Index() {
             ))}
           </div>
         </div>
-      </section>
+      </section></Reveal>
 
-      <section id="earnings" className="py-12 sm:py-20 px-4 sm:px-6 relative overflow-hidden">
+      <Reveal className="block"><section id="earnings" className="py-12 sm:py-20 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-[150px]" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/20 rounded-full blur-[150px]" />
 
@@ -320,9 +321,9 @@ export default function Index() {
             </div>
           </div>
         </div>
-      </section>
+      </section></Reveal>
 
-      <section id="steps" className="py-12 sm:py-20 px-4 sm:px-6 relative">
+      <Reveal className="block"><section id="steps" className="py-12 sm:py-20 px-4 sm:px-6 relative">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-8 sm:mb-16">
             <h3 className="text-3xl sm:text-5xl md:text-6xl font-light mb-4">Как <span className="gradient-text">начать</span></h3>
@@ -343,9 +344,9 @@ export default function Index() {
             ))}
           </div>
         </div>
-      </section>
+      </section></Reveal>
 
-      <section id="about" className="py-12 sm:py-20 px-4 sm:px-6 relative">
+      <Reveal className="block"><section id="about" className="py-12 sm:py-20 px-4 sm:px-6 relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px]" />
         
         <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
@@ -353,9 +354,9 @@ export default function Index() {
           <p className="text-base sm:text-xl text-muted-foreground leading-relaxed">MBA — это модельное агентство с многолетней историей успеха. К каждому сотруднику у нас индивидуальный подход, поэтому мы доводим до результата даже самого начинающего.
 Измени свою жизнь и раскорми свой кошелек прямо сейчас!</p>
         </div>
-      </section>
+      </section></Reveal>
 
-      <section id="faq" className="py-12 sm:py-20 px-4 sm:px-6 relative">
+      <Reveal className="block"><section id="faq" className="py-12 sm:py-20 px-4 sm:px-6 relative">
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-[150px] -translate-y-1/2" />
 
         <div className="max-w-3xl mx-auto relative z-10">
@@ -379,9 +380,9 @@ export default function Index() {
             </Accordion>
           </div>
         </div>
-      </section>
+      </section></Reveal>
 
-      <section id="contact" className="py-12 sm:py-20 px-4 sm:px-6 relative">
+      <Reveal className="block"><section id="contact" className="py-12 sm:py-20 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
         
         <div className="max-w-2xl mx-auto relative z-10">
@@ -447,7 +448,7 @@ export default function Index() {
             )}
           </form>
         </div>
-      </section>
+      </section></Reveal>
 
       <footer className="glass py-8 sm:py-12 px-4 sm:px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto">
