@@ -150,8 +150,11 @@ export default function Index() {
     return () => observer.disconnect();
   }, []);
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const scrollToSection = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
+    setMobileMenuOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -174,16 +177,42 @@ export default function Index() {
               </a>
             ))}
           </div>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="border-primary/50 hover:bg-primary hover:text-white transition-all glow text-xs sm:text-sm px-3 sm:px-4"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            <span className="hidden sm:inline">Стать моделью</span>
-            <span className="sm:hidden">Заявка</span>
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="border-primary/50 hover:bg-primary hover:text-white transition-all glow text-xs sm:text-sm px-3 sm:px-4"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <span className="hidden sm:inline">Стать моделью</span>
+              <span className="sm:hidden">Заявка</span>
+            </Button>
+            <button
+              className="md:hidden w-9 h-9 flex items-center justify-center text-foreground"
+              onClick={() => setMobileMenuOpen((v) => !v)}
+              aria-label="Меню"
+            >
+              <Icon name={mobileMenuOpen ? 'X' : 'Menu'} size={24} />
+            </button>
+          </div>
         </div>
+
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-white/5 px-4 py-4 flex flex-col gap-3 animate-fade-in">
+            {navItems.map(({ id, label }) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                onClick={(e) => scrollToSection(e, id)}
+                className={`text-base transition-colors ${
+                  activeSection === id ? 'text-primary font-medium' : 'text-foreground/80 hover:text-primary'
+                }`}
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        )}
       </nav>
 
       <section className="pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 min-h-screen flex items-center relative overflow-hidden">
