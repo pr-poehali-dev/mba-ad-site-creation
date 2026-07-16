@@ -147,7 +147,7 @@ export default function Index() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-8 sm:mb-16">
             <h3 className="text-3xl sm:text-5xl md:text-6xl font-light mb-4">Почему <span className="gradient-text">MBA</span></h3>
-            <p className="text-muted-foreground text-lg">Всё, что нужно для успешной карьеры модели</p>
+            <p className="text-muted-foreground text-lg">Всё, что нужно для успешной карьеры</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
