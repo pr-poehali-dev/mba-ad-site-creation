@@ -121,18 +121,23 @@ export default function Index() {
     { q: 'В каких городах вы работаете?', a: 'Основной проект — в Краснодаре, но есть возможность для удалённого сотрудничества.' }
   ];
 
+  const scrollToSection = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen">
       <nav className="fixed top-0 w-full glass z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
           <h1 className="text-xl sm:text-2xl font-bold gradient-text">MBA</h1>
           <div className="hidden md:flex gap-8">
-            <a href="#advantages" className="text-sm text-foreground/80 hover:text-primary transition-colors">Преимущества</a>
-            <a href="#work" className="text-sm text-foreground/80 hover:text-primary transition-colors">Работа</a>
-            <a href="#earnings" className="text-sm text-foreground/80 hover:text-primary transition-colors">Калькулятор</a>
-            <a href="#steps" className="text-sm text-foreground/80 hover:text-primary transition-colors">Как начать</a>
-            <a href="#about" className="text-sm text-foreground/80 hover:text-primary transition-colors">О нас</a>
-            <a href="#faq" className="text-sm text-foreground/80 hover:text-primary transition-colors">FAQ</a>
+            <a href="#advantages" onClick={(e) => scrollToSection(e, 'advantages')} className="text-sm text-foreground/80 hover:text-primary transition-colors">Преимущества</a>
+            <a href="#work" onClick={(e) => scrollToSection(e, 'work')} className="text-sm text-foreground/80 hover:text-primary transition-colors">Работа</a>
+            <a href="#earnings" onClick={(e) => scrollToSection(e, 'earnings')} className="text-sm text-foreground/80 hover:text-primary transition-colors">Калькулятор</a>
+            <a href="#steps" onClick={(e) => scrollToSection(e, 'steps')} className="text-sm text-foreground/80 hover:text-primary transition-colors">Как начать</a>
+            <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="text-sm text-foreground/80 hover:text-primary transition-colors">О нас</a>
+            <a href="#faq" onClick={(e) => scrollToSection(e, 'faq')} className="text-sm text-foreground/80 hover:text-primary transition-colors">FAQ</a>
           </div>
           <Button 
             variant="outline" 
