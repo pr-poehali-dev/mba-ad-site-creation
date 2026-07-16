@@ -51,6 +51,19 @@ export default function Index() {
       setNameError('Имя должно быть на русском языке');
       return;
     }
+    const lower = name.toLowerCase();
+    if (!/[аеёиоуыэюя]/.test(lower)) {
+      setNameError('Пожалуйста, введите настоящее имя');
+      return;
+    }
+    if (/(.)\1\1/.test(lower)) {
+      setNameError('Пожалуйста, введите настоящее имя');
+      return;
+    }
+    if (/[бвгджзйклмнпрстфхцчшщ]{4,}/.test(lower)) {
+      setNameError('Пожалуйста, введите настоящее имя');
+      return;
+    }
     setNameError('');
 
     const digits = formData.phone.replace(/\D/g, '');
