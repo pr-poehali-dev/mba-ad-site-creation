@@ -398,7 +398,7 @@ export default function Index() {
             <div>
               <Input 
                 type="tel"
-                placeholder="Телефон"
+                placeholder="+7 (999) 123-45-67"
                 value={formData.phone}
                 onChange={(e) => { setFormData({...formData, phone: formatPhone(e.target.value)}); if (phoneError) setPhoneError(''); }}
                 className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary"
